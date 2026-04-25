@@ -32,7 +32,7 @@ public class ToolsTest extends BaseTest {
 	public void getSingleTool() {
 		
 		List<ToolDetails> inStockLadders = reqSpec
-					.queryParam("category", "ladders")
+					.queryParam("category", Constants.CATEGORY)
 					.queryParam("available", "true")
 				.when()
 					.get("/tools")
@@ -49,10 +49,10 @@ public class ToolsTest extends BaseTest {
 					.extract().as(ToolDetails.class);
 		
 		Assert.assertEquals(res.getId(), Constants.LADDER_ID);
-		Assert.assertEquals(res.getCategory(), "ladders");
-		Assert.assertTrue(res.getName().contains("Velocity Aluminum Multi-Position Ladder"));
-		Assert.assertEquals(res.getManufacturer(), "Little Giant Ladder Systems");
-		Assert.assertEquals(res.getPrice(), 4.95);
+		Assert.assertEquals(res.getCategory(), Constants.CATEGORY);
+		Assert.assertTrue(res.getName().contains(Constants.LADDER_NAME));
+		Assert.assertEquals(res.getManufacturer(), Constants.MANUFACTURER_NAME);
+		Assert.assertEquals(res.getPrice(), Constants.LADDER_PRICE);
 		Assert.assertTrue(res.getCurrentStock() > 0);
 		Assert.assertEquals(res.isInStock(), true);
 		
