@@ -15,8 +15,6 @@ public class ToolDetails {
 	
 	private boolean inStock;
 	
-	public ToolDetails() {}
-	
 	public int getId() {
 		return id;
 	}
