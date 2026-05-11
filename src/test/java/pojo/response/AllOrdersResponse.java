@@ -1,6 +1,6 @@
-package pojo;
+package pojo.response;
 
-public class AllOrderDetails {
+public class AllOrdersResponse {
 	
 	private String orderId;
 	private String toolId;

@@ -1,4 +1,4 @@
-package utils;
+package constants;
 
 public class Constants {
 	
@@ -7,5 +7,8 @@ public class Constants {
 	public static String LADDER_NAME = "Velocity Aluminum Multi-Position Ladder";
 	public static String MANUFACTURER_NAME = "Little Giant Ladder Systems";
 	public static double LADDER_PRICE = 4.95;
+	
+	public static String CUSTOMER_NAME = "John Doe";
+	public static String COMMENT = "Created via automation";
 
 }

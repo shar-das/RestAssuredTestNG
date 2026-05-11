@@ -1,8 +1,8 @@
-package pojo;
+package pojo.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ToolDetails {
+public class ToolDetailsResponse {
 	
 	private int id;
 	private String category;

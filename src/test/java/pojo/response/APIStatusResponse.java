@@ -1,6 +1,6 @@
-package pojo;
+package pojo.response;
 
-public class APIStatus {
+public class APIStatusResponse {
 	
 	private String status;
 

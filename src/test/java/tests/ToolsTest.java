@@ -5,22 +5,22 @@ import java.util.List;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import base.BaseTest;
-import pojo.ToolDetails;
-import utils.Constants;
+import constants.Constants;
+import pojo.response.ToolDetailsResponse;
 
 public class ToolsTest extends BaseTest {
 	
 	@Test
 	public void getAllTools() {
 		
-		List<ToolDetails> tools = reqSpec
+		List<ToolDetailsResponse> tools = reqSpec
 				.when()
 					.get("/tools")
 				.then()
 					.statusCode(200)
-					.extract().jsonPath().getList("", ToolDetails.class);
+					.extract().jsonPath().getList("", ToolDetailsResponse.class);
 		
-		for(ToolDetails tool:tools) {
+		for(ToolDetailsResponse tool:tools) {
 			Assert.assertNotNull(tool.getId());
 			Assert.assertNotNull(tool.getCategory());
 			Assert.assertNotNull(tool.getName());
@@ -31,22 +31,22 @@ public class ToolsTest extends BaseTest {
 	@Test
 	public void getSingleTool() {
 		
-		List<ToolDetails> inStockLadders = reqSpec
+		List<ToolDetailsResponse> inStockLadders = reqSpec
 					.queryParam("category", Constants.CATEGORY)
 					.queryParam("available", "true")
 				.when()
 					.get("/tools")
 				.then()
-					.extract().jsonPath().getList("", ToolDetails.class);
+					.extract().jsonPath().getList("", ToolDetailsResponse.class);
 		
 		int firstLadderId = inStockLadders.get(0).getId();
 		
-		ToolDetails res = reqSpec
+		ToolDetailsResponse res = reqSpec
 				.when()
 					.get("/tools/" + firstLadderId)
 				.then()
 					.statusCode(200)
-					.extract().as(ToolDetails.class);
+					.extract().as(ToolDetailsResponse.class);
 		
 		Assert.assertEquals(res.getId(), Constants.LADDER_ID);
 		Assert.assertEquals(res.getCategory(), Constants.CATEGORY);

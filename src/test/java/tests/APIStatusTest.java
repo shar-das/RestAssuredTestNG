@@ -4,19 +4,19 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import base.BaseTest;
-import pojo.APIStatus;
+import pojo.response.APIStatusResponse;
 
 public class APIStatusTest extends BaseTest {
 	
 	@Test
 	public void getAPIStatus() {
 		
-		APIStatus response = reqSpec
+		APIStatusResponse response = reqSpec
 				.when()
 					.get("/status")
 				.then()
 					.statusCode(200)
-					.extract().as(APIStatus.class);
+					.extract().as(APIStatusResponse.class);
 		
 		Assert.assertEquals(response.getStatus(), "UP", "Tool Rental API is down");
 	}
